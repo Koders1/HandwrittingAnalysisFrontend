@@ -1,21 +1,31 @@
-import React from 'react';
-import ImageUploader from 'react-images-upload';
-export const  UploadComponent = props => (
-    <form>
-        <label>
-            Upload Your Handwritting Sample
+import React from "react";
+import { useDropzone } from "react-dropzone";
+import { GrCloudUpload } from "react-icons/gr";
+import "../App.css"
 
-        </label>
-        <ImageUploader
-            key="image-uploader"
-            withIcon={true}
-            singleImage={true}
-            withPreview={true}
-            label="Maximum size file: 5MB"
-            buttonText="Choose an image"
-            onChange={props.onImage}
-            imgExtension={['.jpg', '.png', '.jpeg']}
-            maxFileSize={5242880}
-        ></ImageUploader>
-    </form>
-);
+export const DropZoneField = (props) => {
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+
+  const files = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+  return (
+    <section className="container">
+      <div {...getRootProps({ className: "dropzone" })}>
+        <input {...getInputProps()} />
+        <div className="drag-area">
+        <GrCloudUpload style={{height:"100",width:"50"}}/>
+          <p>Drag 'n' drop some files here, or click to select files</p>
+        </div>
+        {/* to check file upload successfully */}
+         <aside>
+        <ul>{files}</ul>
+      </aside> 
+      </div>
+      {/* to handle upload */}
+      <button /*onClick={props.onImage(files)} */>Upload HandWritting Sample</button>
+    </section>
+  );
+};

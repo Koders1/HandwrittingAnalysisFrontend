@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ImageUploader from "react-images-upload";
-import Axios from "axios";
+import axios from "./axios";
 import { DropZoneField } from "./components/uploadComponent";
 
 import "./App.css";

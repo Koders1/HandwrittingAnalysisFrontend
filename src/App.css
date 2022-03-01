@@ -28,9 +28,9 @@
 .drag-area {
   font-family: sans-serif;
   text-align: center;
-  background-color:#cacbce;
+  background-color:#0dcaf0;
   border: 2px dashed black;
-  height:200px;
+  height:260px;
   margin: 20px
 }
 

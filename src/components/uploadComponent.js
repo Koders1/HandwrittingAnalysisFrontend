@@ -1,6 +1,8 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
 import { GrCloudUpload } from "react-icons/gr";
+import { FiChevronDown } from "react-icons/fi";
+
 import { analyseImage } from "../apis/analyseImage";
 import "../App.css";
 
@@ -26,7 +28,7 @@ export const DropZoneField = ({
       setResults(result);
       setProgress("uploaded");
     } catch (err) {
-      setErrorMessage("Image not Uploaded");
+      setErrorMessage("Image not uploaded");
       setProgress("uploadError");
     }
   };
@@ -41,7 +43,13 @@ export const DropZoneField = ({
         <input {...getInputProps()} />
         <div className="drag-area">
           <GrCloudUpload style={{ height: "100", width: "50" }} />
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <div style={{display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center"}} >
+          <div style={{backgroundColor: "white",height:"50px",width:"200px",}}>
+            <h2 style={{textAlign: 'center'}}>Choose File</h2></div>
+            <div style={{backgroundColor: "white",height:"50px",width:"50px",borderLeft:".02rem solid"}}><FiChevronDown style={{ height: "50", width: "50" }} /></div>
+          </div>
+          <p>Or Drag a file here</p>
+          
         </div>
         {/* to check file upload successfully */}
         <aside>
